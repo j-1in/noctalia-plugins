@@ -48,13 +48,13 @@
     {
       "id": "mangowc-layout-switcher",
       "name": "Mangowc Layout Switcher",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": "atheeq-rhxn",
       "description": "Switch between different mangowc layouts",
       "repository": "https://github.com/noctalia-dev/noctalia-plugins",
       "minNoctaliaVersion": "3.6.0",
       "license": "MIT",
-      "lastUpdated": "2025-12-16T15:47:15+05:30"
+      "lastUpdated": "2026-01-04T10:43:10+05:30"
     },
     {
       "id": "mini-docker",
