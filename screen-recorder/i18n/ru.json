@@ -34,7 +34,7 @@
     },
     "filename_pattern": {
       "label": "Шаблон имени файла",
-      "description": "Шаблон для сгенерированных имён файлов. Поддерживаемые форматы: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (например: mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "Шаблон имени файла с кодами даты/времени (например: recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

@@ -33,7 +33,7 @@
       "codec-desc": "Opus è consigliato per le migliori prestazioni e dimensioni audio più piccole"    },
     "filename_pattern": {
       "label": "Modello del nome file",
-      "description": "Modello per i nomi dei file generati. Supportato: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (ad es. mycool-recording_yyyyMMdd_HHmmss)"    }
+      "description": "Modello del nome file usando codici data/ora (ad es. recording_yyyyMMdd_HHmmss)"    }
   },
   "tooltips": {
     "start-recording": "Registratore schermo (avvia registrazione)",

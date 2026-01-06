@@ -34,7 +34,7 @@
       "codec-desc": "建议使用Opus以获得最佳性能和最小音频大小"    },
     "filename_pattern": {
       "label": "文件名模式",
-      "description": "生成文件名的模式。支持: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (例如: mycool-recording_yyyyMMdd_HHmmss)"    }
+      "description": "使用日期/时间代码的文件名模式 (例如: recording_yyyyMMdd_HHmmss)"    }
   },
   "tooltips": {
     "start-recording": "屏幕录制器（开始录制）",

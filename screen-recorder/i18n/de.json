@@ -32,7 +32,7 @@
     },
     "filename_pattern": {
       "label": "Dateinamenmuster",
-      "description": "Muster für generierte Dateinamen. Unterstützt: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (z.B. mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "Dateinamenmuster mit Datums-/Zeitcodes (z.B. recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

@@ -31,6 +31,10 @@
       "source-desc": "Kayıt sırasında yakalanacak ses kaynağı",
       "codec": "Ses codec",
       "codec-desc": "En iyi performans ve en küçük ses boyutu için Opus önerilir"
+    },
+    "filename_pattern": {
+      "label": "Dosya adı şablonu",
+      "description": "Tarih/saat kodları kullanan dosya adı şablonu (örn. recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

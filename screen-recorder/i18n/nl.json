@@ -34,7 +34,7 @@
     },
     "filename_pattern": {
       "label": "Bestandsnaampatroon",
-      "description": "Patroon voor gegenereerde bestandsnamen. Ondersteund: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (bijv. mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "Bestandsnaampatroon met datum/tijd codes (bijv. recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

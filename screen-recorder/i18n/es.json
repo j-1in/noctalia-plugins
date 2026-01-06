@@ -32,7 +32,7 @@
     },
     "filename_pattern": {
       "label": "Patrón de nombre de archivo",
-      "description": "Patrón para los nombres de archivo generados. Compatible con: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (p.ej. mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "Patrón de nombre usando códigos de fecha/hora (ej. recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

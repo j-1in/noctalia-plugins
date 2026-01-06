@@ -34,7 +34,7 @@
     },
     "filename_pattern": {
       "label": "Modèle de nom de fichier",
-      "description": "Modèle pour les noms de fichier générés. Supporté : yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (ex. mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "Modèle de nom utilisant des codes de date/heure (par ex. recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

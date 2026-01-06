@@ -34,7 +34,7 @@
     },
     "filename_pattern": {
       "label": "ファイル名パターン",
-      "description": "生成されたファイル名のパターン。サポート: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (例: mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "日付/時刻コードを使用したファイル名パターン (例: recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {

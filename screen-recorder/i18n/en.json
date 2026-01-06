@@ -32,7 +32,7 @@
     },
     "filename_pattern": {
       "label": "Filename pattern",
-      "description": "Pattern for generated filenames. Supported: yyyy, yy, MM, M, dd, d, HH, H, mm, m, ss, s (e.g., mycool-recording_yyyyMMdd_HHmmss)"
+      "description": "Filename pattern using date/time codes (e.g., recording_yyyyMMdd_HHmmss)"
     }
   },
   "tooltips": {
