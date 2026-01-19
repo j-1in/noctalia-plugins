@@ -1,7 +1,6 @@
 # Weekly Calendar Plugin
 
-A weekly calendar plugin complementing Noctalia's inbuilt calendar service.
-
+A weekly calendar plugin that makes use of Noctalia's [CalendarService.qml](https://github.com/noctalia-dev/noctalia-shell/blob/main/Services/Location/CalendarService.qml) to display events.
 ## Features
 
 - **Bar Widget**: Show a quick tooltip to see current and upcoming events on hover (updates occur on click);
