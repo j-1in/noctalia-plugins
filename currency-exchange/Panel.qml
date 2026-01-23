@@ -14,7 +14,7 @@ Item {
 
   readonly property var geometryPlaceholder: panelContainer
   property real contentPreferredWidth: 420 * Style.uiScaleRatio
-  property real contentPreferredHeight: 240 * Style.uiScaleRatio
+  property real contentPreferredHeight: 280 * Style.uiScaleRatio
   readonly property bool allowAttach: true
 
   anchors.fill: parent
@@ -161,17 +161,35 @@ Item {
               }
             }
 
-            NSearchableComboBox {
+            CurrencyComboBox {
               id: fromCombo
-              label: "From"
-              Layout.preferredWidth: 110
-              minimumWidth: 110
+              Layout.fillWidth: true
+              Layout.preferredWidth: 100
+              minimumWidth: 100
               model: currencyListModel
               currentKey: fromCurrency
               onSelected: key => {
                 fromCurrency = key;
               }
             }
+          }
+
+          // Swap row
+          RowLayout {
+            Layout.fillWidth: true
+            Layout.preferredHeight: Style.baseWidgetSize * 0.8
+            spacing: Style.marginS
+
+            Item { Layout.fillWidth: true }
+
+            NIconButton {
+              icon: "arrows-exchange"
+              tooltipText: "Swap currencies"
+              baseSize: Style.baseWidgetSize * 0.7
+              onClicked: swapCurrencies()
+            }
+
+            Item { Layout.fillWidth: true }
           }
 
           // Row 2: To input (result) + To combo
@@ -209,19 +227,18 @@ Item {
                   Layout.alignment: Qt.AlignVCenter
                   icon: "copy"
                   tooltipText: "Copy result"
-                  baseSize: Style.baseWidgetSize * 0.65
-                  colorFg: Color.mOnPrimary
+                  baseSize: Style.baseWidgetSize * 0.7
                   visible: loaded && toAmount > 0
                   onClicked: main.copyToClipboard(toAmount.toFixed(2))
                 }
               }
             }
 
-            NSearchableComboBox {
+            CurrencyComboBox {
               id: toCombo
-              label: "To"
-              Layout.preferredWidth: 110
-              minimumWidth: 110
+              Layout.fillWidth: true
+              Layout.preferredWidth: 100
+              minimumWidth: 100
               model: currencyListModel
               currentKey: toCurrency
               onSelected: key => {
