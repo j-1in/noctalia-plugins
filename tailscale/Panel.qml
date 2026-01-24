@@ -486,6 +486,18 @@ Item {
 
       NButton {
         Layout.fillWidth: true
+        visible: mainInstance?.tailscaleRunning && sortedPeerList.length > 0
+        text: pluginApi?.tr("panel.send-files") || "Send Files"
+        icon: "send"
+        onClicked: {
+          if (mainInstance) {
+            mainInstance.openTaildropWindow()
+          }
+        }
+      }
+
+      NButton {
+        Layout.fillWidth: true
         visible: mainInstance?.tailscaleRunning
         text: pluginApi?.tr("panel.admin-console") || "Admin Console"
         icon: "external-link"

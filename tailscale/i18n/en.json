@@ -32,6 +32,7 @@
     "not-installed": "Tailscale not installed",
     "settings": "Settings",
     "copy-ip": "Copy IP",
+    "send-files": "Send Files",
     "ssh": "SSH to host",
     "ping": "Ping host"
   },
@@ -54,6 +55,7 @@
     "online": "Online",
     "offline": "Offline",
     "no-peers": "No connected peers",
+    "send-files": "Send Files",
     "admin-console": "Admin Console",
     "terminal-warning": {
       "title": "Terminal Not Configured",
@@ -63,6 +65,28 @@
       "active": "Exit Node Active",
       "online": "Online",
       "offline": "Offline"
+    }
+  },
+  "taildrop": {
+    "title": "Send Files via Taildrop",
+    "select-device": "Select a device:",
+    "select-files": "Select Files to Send",
+    "no-devices": "No online devices available",
+    "drop-zone": "Click to browse or drag files here",
+    "drop-here": "Drop files here",
+    "drop-hint": "Multiple file selection supported",
+    "files-ready": "%1 file(s) ready to send",
+    "clear-files": "Clear Files",
+    "cancel": "Cancel",
+    "send": "Send Files",
+    "transferring": "Sending files...",
+    "transfer-success": {
+      "title": "Files Sent",
+      "message": "Files successfully sent to %1"
+    },
+    "transfer-error": {
+      "title": "Transfer Failed",
+      "message": "Failed to send files"
     }
   }
 }
