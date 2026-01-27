@@ -521,7 +521,7 @@
     {
       "id": "world-clock",
       "name": "World Clock",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "official": false,
       "author": "Lokize",
       "description": "Display time from multiple timezones around the world with automatic rotation.",
@@ -529,7 +529,7 @@
       "minNoctaliaVersion": "3.6.0",
       "license": "MIT",
       "tags": [],
-      "lastUpdated": "2026-01-07T22:55:41-03:00"
+      "lastUpdated": "2026-01-26T21:40:51-03:00"
     }
   ]
 }
