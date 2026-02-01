@@ -15,8 +15,6 @@ ColumnLayout {
   property bool editAutoStartBreaks: false
   property bool editAutoStartWork: false
   property bool editCompactMode: false
-
-  property int editBarFontSize: 12
   
   // --- : Sound Property ---
   property bool editPlaySound: true
@@ -30,7 +28,7 @@ ColumnLayout {
   }
 
   Component.onCompleted: {
-    Logger.i("Pomodoro", "Settings UI loaded")
+
     if (pluginApi) {
       loadSettings()
     }
@@ -48,8 +46,6 @@ ColumnLayout {
     root.editAutoStartWork = settings?.autoStartWork ?? defaults?.autoStartWork ?? false
     root.editCompactMode = settings?.compactMode ?? defaults?.compactMode ?? false
 
-    // Load font size
-    root.editBarFontSize = settings?.barFontSize ?? defaults?.barFontSize ?? 12
     
     // --- : Load Sound Setting ---
     root.editPlaySound = settings?.playSound ?? defaults?.playSound ?? true
@@ -59,12 +55,7 @@ ColumnLayout {
     compactModeToggle.checked = root.editCompactMode
     playSoundToggle.checked = root.editPlaySound
 
-    Logger.i("Pomodoro", "Settings loaded: workDuration=" + root.editWorkDuration + 
-             ", autoStartBreaks=" + root.editAutoStartBreaks +
-             ", autoStartWork=" + root.editAutoStartWork +
-             ", compactMode=" + root.editCompactMode +
-             ", playSound=" + root.editPlaySound +
-             ", barFontSize=" + root.editBarFontSize)
+
   }
 
   ColumnLayout {
@@ -140,26 +131,6 @@ ColumnLayout {
       stepSize: 1
       value: root.editSessionsBeforeLongBreak
       onValueChanged: if (value !== root.editSessionsBeforeLongBreak) root.editSessionsBeforeLongBreak = value
-    }
-  }
-
-  // ---  SETTING: Font Size ---
-  ColumnLayout {
-    Layout.fillWidth: true
-    spacing: Style.marginS
-
-    NLabel {
-      label: "Widget Font Size"
-      description: "Text size for the panel bar widget"
-    }
-
-    NSpinBox {
-      id: fontSizeSpinBox
-      from: 8
-      to: 32
-      stepSize: 1
-      value: root.editBarFontSize
-      onValueChanged: if (value !== root.editBarFontSize) root.editBarFontSize = value
     }
   }
 
@@ -271,9 +242,6 @@ ColumnLayout {
     pluginApi.pluginSettings.autoStartBreaks = root.editAutoStartBreaks
     pluginApi.pluginSettings.autoStartWork = root.editAutoStartWork
     pluginApi.pluginSettings.compactMode = root.editCompactMode
-
-    // Save font size
-    pluginApi.pluginSettings.barFontSize = root.editBarFontSize
     
     // --- : Save Sound Setting ---
     pluginApi.pluginSettings.playSound = root.editPlaySound
@@ -284,14 +252,6 @@ ColumnLayout {
       pluginApi.mainInstance.settingsVersion++
     }
 
-    Logger.i("Pomodoro", "Settings saved: workDuration=" + root.editWorkDuration + 
-             ", shortBreak=" + root.editShortBreakDuration +
-             ", longBreak=" + root.editLongBreakDuration +
-             ", sessions=" + root.editSessionsBeforeLongBreak +
-             ", autoStartBreaks=" + root.editAutoStartBreaks +
-             ", autoStartWork=" + root.editAutoStartWork +
-             ", compactMode=" + root.editCompactMode +
-             ", barFontSize=" + root.editBarFontSize +
-             ", playSound=" + root.editPlaySound)
+
   }
 }
