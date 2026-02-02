@@ -406,7 +406,8 @@ DraggableDesktopWidget {
           completed: updates.completed !== undefined ? updates.completed : todos[i].completed,
           createdAt: todos[i].createdAt,
           pageId: todos[i].pageId || 0,
-          priority: updates.priority !== undefined ? updates.priority : (todos[i].priority || "medium")
+          priority: updates.priority !== undefined ? updates.priority : (todos[i].priority || "medium"),
+          details: updates.details !== undefined ? updates.details : (todos[i].details || "")
         };
         return true;
       }
@@ -597,7 +598,8 @@ DraggableDesktopWidget {
             text: todo.text,
             completed: todo.completed,
             pageId: todo.pageId || 0,
-            priority: todo.priority || "medium"
+            priority: todo.priority || "medium",
+            details: todo.details || ""
           });
         }
       }

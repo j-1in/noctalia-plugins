@@ -42,6 +42,9 @@ Item {
             todos[i].priority = "medium";
           }
         }
+        if (todos[i].details === undefined) {
+          todos[i].details = "";
+        }
       }
 
       // Initialize useCustomColors
@@ -92,7 +95,8 @@ Item {
         completed: false,
         createdAt: new Date().toISOString(),
         pageId: pageId,
-        priority: validatedPriority
+        priority: validatedPriority,
+        details: ""
       };
 
       todos.push(newTodo);
@@ -203,7 +207,8 @@ Item {
           completed: updates.completed !== undefined ? updates.completed : todos[i].completed,
           createdAt: todos[i].createdAt,
           pageId: todos[i].pageId || 0,
-          priority: updates.priority !== undefined ? updates.priority : (todos[i].priority || "medium")
+          priority: updates.priority !== undefined ? updates.priority : (todos[i].priority || "medium"),
+          details: updates.details !== undefined ? updates.details : (todos[i].details || "")
         };
         return true;
       }

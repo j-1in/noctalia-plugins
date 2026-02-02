@@ -20,6 +20,7 @@ Item {
   property var rawTodos: []
   property int currentPageId: 0
   property bool showEmptyState: false
+  property bool detailsEditMode: false
 
   // Define a function to schedule reloading of todos
   function scheduleReload() {
@@ -909,7 +910,8 @@ Item {
           completed: false,
           createdAt: new Date().toISOString(),
           pageId: currentPageId,
-          priority: selectedPriority
+          priority: selectedPriority,
+          details: ""
         };
 
         todos.unshift(newTodo);
@@ -1035,7 +1037,8 @@ Item {
           completed: updates.completed !== undefined ? updates.completed : todos[i].completed,
           createdAt: todos[i].createdAt,
           pageId: todos[i].pageId || 0,
-          priority: updates.priority !== undefined ? updates.priority : (todos[i].priority || "medium")
+          priority: updates.priority !== undefined ? updates.priority : (todos[i].priority || "medium"),
+          details: updates.details !== undefined ? updates.details : (todos[i].details || "")
         };
         return true;
       }
@@ -1285,10 +1288,23 @@ Item {
     } else {
       return priorityColors.medium || Color.mPrimary;
     }
-  }
+   }
 
-  // Function to open the detailed view for a todo item
+   // Helper function to get page name by ID
+   function getPageName(pageId) {
+     var pages = pluginApi?.pluginSettings?.pages || [];
+     for (var i = 0; i < pages.length; i++) {
+       if (pages[i].id === pageId) {
+         return pages[i].name;
+       }
+     }
+     return "Unknown";
+   }
+
+   // Function to open the detailed view for a todo item
   function openTodoDetails(todo) {
+    detailsEditMode = false;
+
     // Fill the detail dialog with the todo's information
     detailDialog.todoId = todo.id;
     detailDialog.todoText = todo.text;
@@ -1296,8 +1312,8 @@ Item {
     detailDialog.todoCreatedAt = todo.createdAt;
     detailDialog.todoPageId = todo.pageId;
     detailDialog.todoPriority = todo.priority;
+    detailDialog.todoDetails = todo.details || "";
 
-    // Show the dialog
     detailDialog.open();
   }
 
@@ -1322,7 +1338,8 @@ Item {
           completed: todo.completed === true,
           createdAt: todo.createdAt,
           pageId: todo.pageId,
-          priority: todo.priority || "medium"
+          priority: todo.priority || "medium",
+          details: todo.details || ""
         };
 
         // Add to main model
@@ -1346,18 +1363,19 @@ Item {
     root.showEmptyState = (filteredTodosModel.count === 0);
   }
 
-  // Dialog for displaying todo details
-  Popup {
-    id: detailDialog
+   // Dialog for displaying todo details
+   Popup {
+     id: detailDialog
 
-    property var todoId: 0
-    property string todoText: ""
-    property bool todoCompleted: false
-    property string todoCreatedAt: ""
-    property int todoPageId: 0
-    property string todoPriority: "medium"
+     property var todoId: 0
+     property string todoText: ""
+     property bool todoCompleted: false
+     property string todoCreatedAt: ""
+     property int todoPageId: 0
+      property string todoPriority: "medium"
+      property string todoDetails: ""
 
-    x: (parent.width - width) / 2
+     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     width: 500 * Style.uiScaleRatio
     height: 300 * Style.uiScaleRatio
@@ -1369,6 +1387,8 @@ Item {
     background: Rectangle {
       color: Color.mSurface
       radius: Style.radiusL
+      border.color: Color.mOutline
+      border.width: 1
     }
 
     // Content
@@ -1438,6 +1458,111 @@ Item {
             Layout.fillWidth: true
           }
 
+            // Details section with add/edit button
+            ColumnLayout {
+              Layout.fillWidth: true
+              spacing: Style.marginS
+
+              // Divider before details
+              Rectangle {
+                height: 1
+                color: Color.mOutline
+                opacity: 0.3
+                Layout.fillWidth: true
+              }
+
+              // Label + Add/Edit button row
+              RowLayout {
+                Layout.fillWidth: true
+                spacing: Style.marginS
+
+                NText {
+                  text: pluginApi?.tr("panel.todo_details.label_details") || "Details:"
+                  font.pointSize: Style.fontSizeS
+                  color: Color.mOnSurfaceVariant
+                  Layout.preferredWidth: 80 * Style.uiScaleRatio
+                  Layout.alignment: Qt.AlignVCenter
+                }
+
+                // Spacer to push button to the right
+                Item {
+                  Layout.fillWidth: true
+                }
+
+                NButton {
+                  text: detailDialog.todoDetails.length > 0 ?
+                        (pluginApi?.tr("panel.todo_details.button_edit_details") || "Edit") :
+                        (pluginApi?.tr("panel.todo_details.button_add_details") || "Add")
+                  icon: "pencil"
+                  backgroundColor: Color.mSurfaceVariant
+                  textColor: Color.mOnSurface
+                  fontSize: Style.fontSizeS
+                  outlined: true
+                  onClicked: {
+                    detailsEditMode = true;
+                    Qt.callLater(function() {
+                      detailsTextArea.text = detailDialog.todoDetails;
+                      detailsTextArea.forceActiveFocus();
+                    });
+                  }
+                }
+              }
+
+              // View mode (show details if not empty)
+              NText {
+                text: detailDialog.todoDetails
+                font.pointSize: Style.fontSizeS
+                color: Color.mOnSurface
+                wrapMode: Text.Wrap
+                Layout.fillWidth: true
+                visible: detailDialog.todoDetails.length > 0 && !detailsEditMode
+              }
+
+              // Edit mode (TextArea)
+              TextArea {
+                id: detailsTextArea
+                visible: detailsEditMode
+                text: detailDialog.todoDetails
+                Layout.fillWidth: true
+                Layout.preferredHeight: 100
+                wrapMode: TextArea.Wrap
+                color: Color.mOnSurface
+                background: Rectangle {
+                  color: Color.mSurfaceVariant
+                  radius: Style.iRadiusS
+                }
+                Keys.onEscapePressed: {
+                  detailsEditMode = false;
+                }
+              }
+
+              // Save/Cancel buttons for details edit
+              RowLayout {
+                Layout.fillWidth: true
+                spacing: Style.marginS
+                visible: detailsEditMode
+
+                NButton {
+                  text: pluginApi?.tr("panel.todo_details.button_save") || "Save"
+                  backgroundColor: Color.mPrimary
+                  onClicked: {
+                    updateTodo(detailDialog.todoId, { details: detailsTextArea.text });
+                    pluginApi.saveSettings();
+                    detailDialog.todoDetails = detailsTextArea.text;
+                    detailsEditMode = false;
+                  }
+                }
+
+                NButton {
+                  text: pluginApi?.tr("panel.todo_details.button_cancel") || "Cancel"
+                  backgroundColor: Color.mSurfaceVariant
+                  onClicked: {
+                    detailsEditMode = false;
+                  }
+                }
+              }
+            }
+
           // Divider
           Rectangle {
             height: 1
@@ -1451,13 +1576,13 @@ Item {
             Layout.fillWidth: true
             spacing: Style.marginS
 
-            // Page ID
+            // Page
             RowLayout {
               spacing: Style.marginS
               Layout.fillWidth: true
 
               NText {
-                text: pluginApi?.tr("panel.todo_details.label_page_id")
+                text: pluginApi?.tr("panel.todo_details.label_page")
                 font.pointSize: Style.fontSizeS
                 color: Color.mOnSurfaceVariant
                 Layout.preferredWidth: 80 * Style.uiScaleRatio
@@ -1465,8 +1590,9 @@ Item {
               }
 
               NText {
-                text: "#" + detailDialog.todoPageId
+                text: getPageName(detailDialog.todoPageId)
                 font.pointSize: Style.fontSizeS
+                font.weight: Font.Medium
                 color: Color.mOnSurface
                 Layout.alignment: Qt.AlignTop
               }

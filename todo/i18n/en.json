@@ -39,8 +39,12 @@
       "status_pending": "Pending",
       "label_created": "Created: ",
       "label_priority": "Priority: ",
-      "label_page_id": "Page ID: ",
-      "button_close": "Close"
+      "label_page": "Page:",
+      "label_details": "Details:",
+      "button_add_details": "Add",
+      "button_edit_details": "Edit",
+      "button_save": "Save",
+      "button_cancel": "Cancel"
     },
     "todo_item": {
       "delete_button_tooltip": "Delete",
