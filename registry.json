@@ -40,7 +40,7 @@
     {
       "id": "catwalk",
       "name": "Catwalk",
-      "version": "1.1.4",
+      "version": "1.1.5",
       "official": false,
       "author": "MannuVilasara",
       "description": "A cute animated cat for your bar.",
@@ -53,7 +53,7 @@
         "Panel",
         "Fun"
       ],
-      "lastUpdated": "2026-01-26T23:59:29-05:00"
+      "lastUpdated": "2026-02-02T16:59:59-05:00"
     },
     {
       "id": "clipper",
@@ -489,7 +489,7 @@
     {
       "id": "todo",
       "name": "Todo List",
-      "version": "1.8.3",
+      "version": "1.9.0",
       "official": false,
       "author": "lonerOrz <lonerOrz@qq.com>",
       "description": "A simple todo list manager plugin for Noctalia Shell.",
@@ -502,7 +502,7 @@
         "Panel",
         "Productivity"
       ],
-      "lastUpdated": "2026-01-27T14:00:57-05:00"
+      "lastUpdated": "2026-02-03T03:57:11+08:00"
     },
     {
       "id": "translator",
