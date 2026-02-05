@@ -88,20 +88,22 @@
     {
       "id": "clipper",
       "name": "Clipper",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "official": false,
       "author": "blackbartblues",
-      "description": "Advanced clipboard manager with history, search, keyboard navigation, and ToDo integration.",
-      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "description": "Advanced clipboard manager with history, search, keyboard navigation, ToDo integration, pinned items, notecards/sticky notes, and selection-to-notecard feature. Fully translated with comprehensive i18n support.",
+      "repository": "https://github.com/blackbartblues/noctalia-clipper",
       "minNoctaliaVersion": "4.1.2",
       "license": "MIT",
       "tags": [
         "Clipboard",
         "Utility",
         "Bar",
-        "Panel"
+        "Panel",
+        "Notes",
+        "i18n"
       ],
-      "lastUpdated": "2026-01-25T13:32:54-05:00"
+      "lastUpdated": "2026-02-05T13:48:25+01:00"
     },
     {
       "id": "currency-exchange",
